@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasel Joy R. Gabriel - Portfolio</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  body {
+    background: #e6f0fa;
+    color: #000;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  nav {
+    position: fixed;
+    width: 100%;
+    background: #001f4d;
+    padding: 15px 0;
+    z-index: 100;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+  }
+  nav ul li a {
+    color: #e6f0fa;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+  nav ul li a:hover {
+    color: #fff;
+  }
+  header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #001f4d;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+  }
+  header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #add8e6;
+    margin-bottom: 20px;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-15px); }
+  }
+  header h1 { font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  header .typing {
+    font-size: 1.2rem;
+    color: #add8e6;
+    height: 30px;
+    overflow: hidden;
+  }
+  section {
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  section h2 {
+    font-size: 2rem;
+    color: #001f4d;
+    border-bottom: 3px solid #add8e6;
+    display: inline-block;
+    margin-bottom: 40px;
+    padding-bottom: 5px;
+  }
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; 
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .skill {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+  .skill svg {
+    transform: rotate(-90deg);
+    width: 120px;
+    height: 120px;
+  }
+  .skill circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+  .skill .bg {
+    stroke: #ddd;
+  }
+  .skill .progress {
+    stroke: #001f4d;
+    stroke-dasharray: 345.6;
+    stroke-dashoffset: 345.6;
+    transition: stroke-dashoffset 1.5s ease;
+    transform-origin: center;
+  }
+  .skill .skill-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:
+    translate(-50%, -50%);
+    text-align: center;
+  }
+  .skill .skill-name h3 {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+  }
+  .skill .skill-name span {
+    font-weight: bold;
+    color: #001f4d;
+  }
+  .about-me, .education-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    line-height: 1.7;
+    color: #000;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s;
+  }
+  .about-me:hover, .education-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  .download-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #001f4d;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  .download-btn:hover {
+    background: #003399;
+  }
+  .experience-cards { display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .experience-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+  }
+  .experience-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+  .experience-card span {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #001f4d;
+  }
+  .experience-card p em {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .contact-card {
+    background: #001f4d;
+    color: #e6f0fa;
+    padding: 20px;
+    border-radius: 15px;
+    flex: 1 1 200px;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .contact-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+  .contact-card span {
+    display: block; 
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .contact-card p {
+    font-size: 1rem;
+  }
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #001f4d;
+    color: #fff;
+  }
+  @media(max-width: 768px){
+    nav ul { flex-direction: column;
+      gap: 15px;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    .skills {
+      gap: 20px;
+    }
+    .experience-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#about">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#aboutme">About Me</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header id="about">
+  <img src="images/Untitled-1.png" alt="Rasel Joy R. Gabriel Photo">
+  <h1>Rasel Joy R. Gabriel</h1>
+  <div class="typing"></div>
+</header>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill" data-percent="75">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>HTML</h3><span>75%</span></div>
+    </div>
+    <div class="skill" data-percent="75">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>CSS</h3><span>75%</span></div>
+    </div>
+    <div class="skill" data-percent="80">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>Fast Learner</h3><span>80%</span></div>
+    </div>
+    <div class="skill" data-percent="85">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>Creative</h3><span>85%</span></div>
+    </div>
+    <div class="skill" data-percent="95">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>Detail-oriented</h3><span>95%</span></div>
+    </div>
+    <div class="skill" data-percent="80">
+      <svg><circle class="bg" cx="60" cy="60" r="55"></circle><circle class="progress" cx="60" cy="60" r="55"></circle></svg>
+      <div class="skill-name"><h3>Organized</h3><span>80%</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="aboutme">
+  <h2>About Me</h2>
+  <div class="about-me">
+    <p>Hello! I’m Rasel Joy R. Gabriel, an IT student who is detail-oriented and creative. I am seeking an OJT position where I can apply my skills, gain practical experience, contribute to real projects, and learn from experienced professionals while further developing my knowledge in the IT field.</p>
+    <a href="files\My Resume.pdf" class="download-btn" download>Download Resume</a>
+  </div>
+
+  <h2>Work Experience</h2>
+  <div class="experience-cards">
+    <div class="experience-card"><span>Sales Associate - PSA Manpower Services Inc.</span><p><em>Nov 2023 - Aug 2024</em></p><p>Welcomed customers, guided them to products, and suggested solutions. Enhanced store experience and boosted sales.</p></div>
+    <div class="experience-card"><span>Team Member - SCAD Services (S) Pte., Ltd.</span><p><em>Apr 2019 - Sept 2019</em></p><p>Collaborated with the team to achieve daily, weekly, and monthly goals. Maintained efficiency and quality.</p></div>
+    <div class="experience-card"><span>Production Operator - House Technology Industries Pte., Ltd.</span><p><em>Oct 2018 - Mar 2019</em></p><p>Inspected and adjusted products to meet high-quality standards. Ensured smooth production flow.</p></div>
+    <div class="experience-card"><span>Warehouse Clerk - Keo Sung Enterprise Co. Phils., Inc.</span><p><em>May 2018 - Aug 2018</em></p><p>Maintained accurate records, organized inventory, and optimized delivery processing.</p></div>
+    <div class="experience-card"><span>FQC Inspector - Keo Sung Enterprise Co. Phils., Inc.</span><p><em>Sept 2017 - Apr 2018</em></p><p>Ensured proper handling and quality inspection of products. Maintained clean work environment.</p></div>
+  </div>
+
+  <h2>Education</h2>
+  <div class="education-card"><span>Information Technology - AdvancedTech Institute of MicroScience Training and Assessment Center</span><p>2024 - Present</p></div>
+  <div class="education-card"><span>High School Diploma - Partida High School</span><p>2011 - 2015</p></div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-cards">
+    <div class="contact-card"><span>📧 Email</span><p>gabrielraseljoy@gmail.com</p></div>
+    <div class="contact-card"><span>📞 Phone</span><p>+63 912 634 5470</p></div>
+    <div class="contact-card"><span>📍 Location</span><p>San Miguel, Bulacan, Philippines</p></div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Rasel Joy R. Gabriel. All rights reserved.</footer>
+
+<script>
+  const roles = ["IT Student", "Detail-oriented", "Creative"];
+  let i=0, j=0;
+  const typingEl = document.querySelector('.typing');
+  function typeRole(){
+    if(i<roles.length){
+      if(j<=roles[i].length){
+        typingEl.textContent = roles[i].substring(0,j);
+        j++;
+        setTimeout(typeRole,150);
+      } else { setTimeout(()=>{ j=0; i=(i+1)%roles.length; typeRole(); },1000); }
+    }
+  }
+  typeRole();
+
+
+  const skills = document.querySelectorAll('.skill');
+  function isInViewport(el){ const rect = el.getBoundingClientRect(); return rect.top <= window.innerHeight && rect.bottom >= 0; }
+  function animateSkills(){
+    skills.forEach(skill=>{
+      const circle = skill.querySelector('.progress');
+      const percent = skill.getAttribute('data-percent');
+      const radius = circle.getAttribute('r');
+      const circumference = 2 * Math.PI * radius;
+      circle.style.strokeDasharray = circumference;
+      if(isInViewport(skill)){
+        circle.style.strokeDashoffset = circumference * (1 - percent/100);
+      } else {
+        circle.style.strokeDashoffset = circumference;
+      }
+    });
+  }
+  window.addEventListener('scroll', animateSkills);
+  window.addEventListener('load', animateSkills);
+</script>
+
+</body>
+</html>
